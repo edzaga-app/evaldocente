@@ -1,0 +1,15 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" [opened]="isOpen">
+        <div class="sidenav-logo-container">
+            <app-logo></app-logo>
+        </div>
+        <mat-nav-list>
+            <app-nav-menu-item ></app-nav-menu-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-nav-toolbar (toggleSideNav)="toggleSideNav()"
+                         (logout)="logout()"></app-nav-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

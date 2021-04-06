@@ -1,0 +1,112 @@
+<div class="container-wraper">
+  <div fxLayout="column">
+    <div class="box-content-wrapper">
+      <div class="box-content-title">
+        <div class="box-content-title-spacer"><strong>{{title}}</strong>
+        </div>
+      </div>
+      <div class="box-content-body">
+        <form fxLayout="column">
+          <div class="expanded-container">
+            <div fxLayout="row" fxLayout.lt.sm="column" fxLayoutGap="20px">
+              <div fxFlex="35">
+                <mat-form-field>
+                  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Docente" #input>
+                </mat-form-field>    
+              </div>
+              <div fxFlex="35">
+                <mat-form-field>
+                  <input type="text"
+                       placeholder="Buscar por dependecia"
+                       aria-label="Number"
+                       matInput
+                       name="dependency"
+                       [formControl]="myControl"
+                       [matAutocomplete]="auto"
+                       (keyup)="applyFilter($event.target.value)">
+                  <mat-autocomplete autoActiveFirstOption 
+                    #auto="matAutocomplete"
+                    (optionSelected)="getPosts($event.option.value)">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option.module">
+                      {{option.module}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>  
+              </div>
+              <div fxFlex="30" class="radio-height">
+                <mat-radio-group color="primary" aria-label="Seleccione una opción">
+                  <mat-radio-button value="1" class="radio-label">{{ teacherRecruitmen.permanents }}</mat-radio-button>
+                  <mat-radio-button value="2" class="radio-label">{{ teacherRecruitmen.temporarys }}</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div> 
+            <br> 
+            <div fxLayout="row" fxLayout.lt.sm="column" fxLayoutGap="20px">
+              <div fxFlex="100">
+                <div class="mat-elevation-z8">
+                  <table mat-table [dataSource]="dataTeacherEvaluation">
+                
+                    <!-- Visualiza el reporte -->
+                    <ng-container matColumnDef="see">
+                      <th class="content-actions" mat-header-cell *matHeaderCellDef>Ver informe</th>
+                      <td mat-cell *matCellDef="let element">
+                        <button mat-button>
+                          <mat-icon>visibility</mat-icon> 
+                        </button>
+                      </td>
+                    </ng-container>
+                
+                    <!-- Documento docente -->
+                    <ng-container matColumnDef="teacherDocument">
+                      <th mat-header-cell *matHeaderCellDef> Documento </th>
+                      <td mat-cell *matCellDef="let element"> {{element.teacherDocument}} </td>
+                    </ng-container>
+                
+                    <!-- Nombre docente -->
+                    <ng-container matColumnDef="teacherName">
+                      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                      <td mat-cell *matCellDef="let element"> {{element.teacherName}} </td>
+                    </ng-container>
+                
+                    <!-- Estructura docente -->
+                    <ng-container matColumnDef="strutureMoreCredits">
+                      <th mat-header-cell *matHeaderCellDef> Estructura </th>
+                      <td mat-cell *matCellDef="let element"> {{element.strutureMoreCredits}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="evaluatorName">
+                      <th mat-header-cell *matHeaderCellDef> Nombre Evaluador </th>
+                      <td mat-cell *matCellDef="let element"> {{element.evaluatorName}} </td>
+                    </ng-container>
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <!-- Fila a mostrar cuando no encuentra datos -->
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell" colspan="5" *ngIf="isFilter">No hay datos que coincidan con el filtro "{{input.value}}"</td>
+                    </tr>
+
+                  </table>
+                  
+                  <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+                    <mat-progress-spinner  color="primary" mode="indeterminate"></mat-progress-spinner>
+                  </mat-card>
+
+
+                  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  
+  
+  
+  

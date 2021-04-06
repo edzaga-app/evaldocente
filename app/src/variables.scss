@@ -1,0 +1,143 @@
+@import '../node_modules/@angular/material/theming';
+
+$main-font-color: black;
+
+$my-app-primary: mat-palette($mat-blue, 800);
+$my-app-accent:  mat-palette($mat-blue-grey);
+$my-app-warn:    mat-palette($mat-red);
+
+$primaryColor: map-get($my-app-primary, 500);
+
+
+body {
+  font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  margin: 0;
+}
+
+.white-icon {
+  color: #dfdfdf !important;
+}
+
+.white-icon svg {
+  fill: #dfdfdf !important;
+}
+
+/*
+* Estilos base para todos los wraper
+*/
+.mat-drawer-container {
+  background-color: #ecf0f5 !important;
+}
+
+.container-wraper {
+  padding: 10px !important;
+}
+
+.container-wraper-dialog {
+  padding: 20px !important;
+} 
+
+.box-content-wrapper{
+  border: 1px solid rgba(0,0,0,.03) !important;
+    box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12) !important;
+    margin: 4px !important;
+}
+
+.box-content-title {
+  align-content: center !important;
+  align-items: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  padding: 20px 20px !important;
+  color: rgba(0,0,0,.54) !important;
+  background: rgba(0,0,0,.03) !important;
+}
+
+.box-content-title-spacer {
+  flex: 1 1 auto;
+}
+
+.box-content-body {
+  padding: 30px;
+  background-color: #fafafa !important;
+}
+
+.title-toolbar {
+  color: rgba(0,0,0,.54) !important;
+  font-family: Roboto, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+}
+
+
+/*
+* Estilo tablas
+*/
+.content-actions {
+  width: 70px !important;
+}
+
+/*
+* Estilos responsive
+*/
+
+.sidebar {
+  background: #efefef;
+  padding: 10px;
+}
+
+.page {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+mat-form-field, mat-checkbox {
+  display: block;
+  width: 100%;
+}
+
+mat-checkbox {
+  margin-bottom: 10px;
+}
+
+.button {
+  margin: 3px;
+}
+
+.arrow-edge {
+  background-color: #666 !important;
+}
+
+
+.expanded-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.expanded-container > * {
+  width: 100%;
+}
+
+.button-row button,
+  .button-row a {
+    margin-right: 8px;
+  }
+
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.mat-header-cell {
+  background-color: #ecf0f5 !important;
+}
+
