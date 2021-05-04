@@ -1,6 +1,8 @@
 import oracledb from 'oracledb';
 import db from '../config/database';
 import Evaluation from '../models/evaluation';
+import EvaluationQuestion from '../models/evaluationQuestion';
+import HeteroResults from '../models/heteroResults';
 import TeacherToEvaluate from '../models/teacherToEvaluate';
 import User from '../models/user';
 import CrudRepository from './crudRepository';
@@ -12,6 +14,124 @@ class TeacherEvaluationRepository extends CrudRepository{
     super();
   }
 
+  public async getComments(evaluationId: number | string, teacherId: number | string) {
+    let res = null;
+    let query: string;
+    let bind: string[] = [];
+    try { 
+
+    } catch (err) {
+      console.error(`Error en ${this.className} => getComments`, err);
+    }
+    return res;
+  }
+
+  /**
+   * Obtiene la calificación que los estudiantes dieron al docente
+   * en sus asignaturas
+   * @param evaluationId Id de la evaluación docente
+   * @param teacherId id del docente al que se evaluó
+   * @returns la calificación de los estudiantes
+   */
+  public async geHeteroResults(evaluationId: number | string, teacherId: number | string): Promise <HeteroResults[] | null> {
+    let res = null;
+    let query: string;
+    let bind: string[] = [];
+    try {
+      bind.push(evaluationId.toString(), teacherId.toString());
+      query = `
+        SELECT ASIGNATURA AS "course",
+          IDGRUPO AS "groupId",
+          GRUPO AS "group",
+          ESTUDIANTE AS "stundent",
+          P1 AS "q1",
+          P2 AS "q2",
+          P3 AS "q3",
+          P4 AS "q4",
+          P5 AS "q5",
+          P6 AS "q6",
+          P7 AS "q7",
+          P8 AS "q8",
+          P9 AS "q9",
+          P10 AS "q10",
+          P11 AS "q11",
+          P12 AS "q12",
+          P13 AS "q13",
+          P14 AS "q14",
+          P15 AS "q15",
+          P16 AS "q16",
+          P17 AS "q17",
+          P18 AS "q18",
+          P19 AS "q19",
+          P20 AS "q20"
+        FROM TABLE(PKG_REPORTES.FUN_OBTENERRESULTADOSHETERO(:evaluationId, :teacherId))`;
+      res = await this.get<HeteroResults>(query, bind);
+
+    } catch (err) {
+      console.error(`Error en ${this.className} => `, err);
+    }
+    return res;
+  }
+
+  /**
+   * Obtine las preguntas de la heteroevaluacion para 
+   * los docentes de planta y transitorio 
+   * @param evaluationId Id de la evalucación docente
+   * @returns Las preguntas (intrumentos)
+   */
+  public async getQuestionsPermanents(evaluationId: number | string): Promise <EvaluationQuestion[] | null> {
+    let res = null;
+    let query: string;
+    let bind: string[] = [];
+    try {
+      bind.push(evaluationId.toString());
+      query = `
+        SELECT NUMPREGUNTA AS "questionId",
+          PREGUNTA AS	"question",
+          CONTENIDO AS "content"
+        FROM VI_EVDO_PREGUNTASPLANTA
+        WHERE IDEVALUACION = :evaluationId`;
+      res = await this.get<EvaluationQuestion>(query, bind);
+
+    } catch (err) {
+      console.error(`Error en ${this.className} => `, err);
+    }
+    return res;
+  }
+
+  /**
+   * Obtiene los docentes catedráticos que se van a evaluar en la heteroevalución
+   * @param evaluationId Id de la evalucación docente
+   * @param evaluatorId Id del usuario que ingresa a la aplicación
+   * @returns los docentes catedráticos a evaluar
+   */
+  public async getTeacherToEvaluateTemporarys(evaluationId: number | string, evaluatorId: number | string): Promise <TeacherToEvaluate[] | null> {
+    let res = null;
+    let query: string;
+    let bind: string[] = [];
+    try {
+      bind.push(evaluationId.toString(), evaluatorId.toString());
+      query = `
+        SELECT IDTERCERO AS "teacherId",
+          NUMERODOCUMENTO AS "teacherDocument",
+          NOMBRE AS "teacherName",
+          ESTRUCTURA AS "strutureMoreCredits",
+          '' AS "evaluatorName"
+        FROM TABLE(PKG_EVALDOCENTE.FUN_OBTENERDOCENTESCATEDRA(:evaluationId, :evaluatorId))`;
+      res = await this.get<TeacherToEvaluate>(query, bind);
+
+    } catch (err) {
+      console.error(`Error en ${this.className} => `, err);
+    }
+    return res;
+  }
+
+  /**
+   * Obtiene los docentes que se van a evaluar en la heteroevalución
+   * @param evaluationId Id de la evalucación docente
+   * @param evaluatorId Id del usuario que ingresa a la aplicación
+   * @returns los docentes a evaluar
+   */
   public async getTeacherToEvaluate(evaluationId: number | string, evaluatorId: number | string): Promise <TeacherToEvaluate[] | null> {
     let res = null;
     let query: string;
@@ -32,7 +152,6 @@ class TeacherEvaluationRepository extends CrudRepository{
     }
     return res;
   }
-
 
   /**
    * Obtiene el id del periodo académico de cada evaluación docente
