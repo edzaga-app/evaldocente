@@ -20,7 +20,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { from } from 'rxjs';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   imports:[
@@ -45,7 +45,8 @@ import { from } from 'rxjs';
     MatSelectModule,
     MatDialogModule,
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxChartsModule
   ],
   exports:[
     FormsModule,
@@ -69,7 +70,8 @@ import { from } from 'rxjs';
     MatSelectModule,
     MatDialogModule,
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule, 
+    NgxChartsModule
   ]
 })
 export class MaterialModule { }

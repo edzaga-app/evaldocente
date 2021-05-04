@@ -1,0 +1,29 @@
+.report-action-buttons {
+    padding-bottom: 20px;
+}
+  
+.report-headers-align .mat-expansion-panel-header-title,
+.report-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+  
+.report-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    //align-items: center;
+    flex: 0 0 auto;
+}
+  
+.report-headers-align .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+}
+
+.font-label {
+    color: rgba(0, 0, 0, 0.70);
+}
+
+.right-aligned-header > .mat-content {
+    justify-content: space-between !important;
+}
+.mat-content > mat-panel-title, .mat-content > mat-panel-description {
+  flex: 0 0 auto !important;
+}

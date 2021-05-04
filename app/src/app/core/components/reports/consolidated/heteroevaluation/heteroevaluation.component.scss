@@ -1,0 +1,82 @@
+table {
+    width: 100%;
+}
+.mat-column-question {
+    width: 64px !important;
+}
+
+
+.report-action-buttons {
+    padding-bottom: 20px;
+}
+  
+.report-headers-align .mat-expansion-panel-header-title,
+.report-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+  
+.report-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    //align-items: center;
+    flex: 0 0 auto;
+}
+  
+.report-headers-align .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+}
+
+.font-label {
+    color: rgba(0, 0, 0, 0.70);
+}
+
+.right-aligned-header > .mat-content {
+    justify-content: space-between !important;
+}
+.mat-content > mat-panel-title, .mat-content > mat-panel-description {
+  flex: 0 0 auto !important;
+}
+
+
+// Estilo para las tablas 
+.table-answers {
+    border: 1px solid #dee2e6;
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    border-collapse: collapse;
+}
+
+.table-answers td, .table-answers th {
+    text-align: center;
+    border: 1px solid #dee2e6;
+}
+
+.header-active {
+    color: rgba(0, 0, 0, 0.70) !important;
+    background-color: rgba(0,0,0,.075);
+}
+
+.tfoot-active {
+    color: rgba(0, 0, 0, 0.70);
+    background-color: rgba(0,0,0,.075);
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.total-label {
+    margin-left: auto !important;
+}
+
+.description-item {
+    color: rgba(0, 0, 0, 0.80) !important;
+    text-shadow: 4px 4px 4px #aaa !important;
+}
+
+
+
+

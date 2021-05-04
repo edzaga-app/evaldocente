@@ -20,6 +20,13 @@ export const navRoutes: NavRoute[] = [
       ),
   },
   {
+    path: 'consolidadohetero',
+    loadChildren: () => 
+      import('./pages/consolidated-report/consolidated-report.module').then(
+        m => m.ConsolidatedReportModule
+      ),
+  },
+  {
       path: '',
       redirectTo: 'inicio/:token',
       pathMatch: 'full',

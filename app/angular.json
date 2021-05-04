@@ -31,8 +31,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/devextreme/dist/css/dx.common.css",
-              "node_modules/devextreme/dist/css/dx.light.css",
               "src/styles.scss",
               "src/theme.scss",
               "src/app/core/styles/nav-styles.scss"

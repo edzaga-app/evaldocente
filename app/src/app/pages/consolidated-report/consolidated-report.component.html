@@ -1,0 +1,94 @@
+<div class="container-wraper">
+  <div fxLayout="column">
+    <div class="box-content-wrapper">
+      <div class="box-content-title">
+        <div class="box-content-title-spacer"><strong>{{title}}</strong>
+        </div>
+      </div>
+      <div class="box-content-body">
+        <form fxLayout="column">
+          <div class="expanded-container">
+            <div class="report-action-buttons">
+              <button mat-button (click)="accordion.openAll()">Expand All</button>
+              <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+            </div>
+            <mat-accordion class="report-headers-align" multi>
+              <!-- HeteroEvaluación -->
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="font-label">
+                     <strong>Heteroevaluación</strong> 
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    <mat-icon>table_view</mat-icon>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+            
+                <app-heteroevaluation></app-heteroevaluation>
+                <br>
+              </mat-expansion-panel>
+
+              <!-- Autoevaluación -->
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="font-label">
+                     <strong>Autoevaluación</strong> 
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    <mat-icon>person</mat-icon>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+            
+                <app-selfevaluation></app-selfevaluation>
+
+              </mat-expansion-panel>
+              
+
+              <!-- Coevaluación -->
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="font-label">
+                     <strong>Coevaluación</strong> 
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    <mat-icon>group</mat-icon>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+            
+                <app-coevaluation></app-coevaluation>
+
+              </mat-expansion-panel>
+
+              <!-- Resultados -->
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="font-label">
+                     <strong>Resultados</strong> 
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    <mat-icon>library_books</mat-icon>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+            
+                <mat-form-field>
+                  <mat-label>First name</mat-label>
+                  <input matInput>
+                </mat-form-field>
+            
+                <mat-form-field>
+                  <mat-label>Age</mat-label>
+                  <input matInput type="number" min="1">
+                </mat-form-field>
+              </mat-expansion-panel>
+
+
+            </mat-accordion>
+
+            
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

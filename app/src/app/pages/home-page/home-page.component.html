@@ -34,9 +34,10 @@
                 </mat-form-field>  
               </div>
               <div fxFlex="30" class="radio-height">
-                <mat-radio-group color="primary" aria-label="Seleccione una opción">
-                  <mat-radio-button value="1" class="radio-label">{{ teacherRecruitmen.permanents }}</mat-radio-button>
-                  <mat-radio-button value="2" class="radio-label">{{ teacherRecruitmen.temporarys }}</mat-radio-button>
+                <mat-radio-group color="primary" (change)="teacherRecruitmentType($event.value)" aria-label="Seleccione una opción">
+                  <mat-radio-button value="permanents" [checked]="true" class="radio-label">{{ teacherRecruitmen.permanents }}</mat-radio-button>
+                  <mat-radio-button value="temporarys" class="radio-label">{{ teacherRecruitmen.temporarys }}</mat-radio-button>
+                  <!-- <mat-radio-button value="virtuals" class="radio-label">{{ teacherRecruitmen.virtuals }}</mat-radio-button> -->
                 </mat-radio-group>
               </div>
             </div> 
@@ -50,7 +51,7 @@
                     <ng-container matColumnDef="see">
                       <th class="content-actions" mat-header-cell *matHeaderCellDef>Ver informe</th>
                       <td mat-cell *matCellDef="let element">
-                        <button mat-button>
+                        <button mat-button [routerLink]="['/app/consolidadohetero']">
                           <mat-icon>visibility</mat-icon> 
                         </button>
                       </td>

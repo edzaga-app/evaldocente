@@ -1,14 +1,13 @@
-//import { Request, Response, NextFunction, Router } from 'express';
-import * as express from 'express';
+import { Request, Response, NextFunction, Router } from 'express';
 import jwt from 'jsonwebtoken';
 import TokenData from '../models/tokenData';
 
 class Auth {
-  public router = express.Router();
+  public router = Router();
 
   constructor() { }
 
-  public auth = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  public auth = (req: Request, res: Response, next: NextFunction) => {
     let token = req.headers["authorization"];
     let request: any;
     if (!token) {
